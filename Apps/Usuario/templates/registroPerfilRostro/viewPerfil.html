@@ -1,0 +1,43 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+    <div class="container mt-4 d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">{{ user.usuario.usuario }}</h2>
+                        <div class="foto-perfil mr-3 mb-3">
+                            {% include 'layout/fotoPerfil/fotoPerfil.html'%}
+                        </div>
+                        <a href="{% url 'EditPerfilRostro' %}" class="btn btn-primary btn-editar">
+                            <i class="fas fa-pencil-alt"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="informacion-usuario">
+                            {% if user.first_name and user.last_name %}
+                                <p class="card-text"><strong>Nombre:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                            {% else %}
+                                <p class="card-text"><strong>Nombre:</strong> None </p>
+                            {% endif %}
+                            <p class="card-text"><strong>Correo Electrónico:</strong> {{ user.email }}</p>
+                            <p class="card-text"><strong>Teléfono:</strong> {{ user.usuario.telefono }}</p>
+                            <p class="card-text"><strong>Cédula:</strong> {{ user.usuario.cedula }}</p>
+                            <p class="card-text"><strong>Dirección:</strong> {{ user.usuario.direccion }}</p>
+                            <p class="card-text"><strong>Rol:</strong> {{ user.usuario.rol.rol }}</p>
+                            <p class="card-text"><strong>Curso:</strong> Curso aquí</p>
+                            <p class="card-text"><strong>Asignatura:</strong> Asignatura aquí</p>
+                            <p class="card-text"><strong>Semestre:</strong> Semestre aquí</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

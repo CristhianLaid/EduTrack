@@ -1,0 +1,43 @@
+.secciones{
+    display: grid;
+    gap: 5px;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+    "perfil"
+    "nav";
+}
+
+.secciones .perfil{
+   display: flex;
+    justify-content: center;
+    align-items: end;
+    grid-area: perfil;
+}
+
+.secciones .perfil img{
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 90px;
+    height: 170px;
+    max-width: 170px;
+}
+
+.secciones .nav{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-top: 20px;
+    grid-area: nav;
+}
+
+.secciones .nav ul li a{
+   font-size: 15pt;
+    font-weight: bold;
+    color: #dec9ee;
+}
+
+.secciones .nav ul li a:active{
+    color: #ccc8d5;
+}
+

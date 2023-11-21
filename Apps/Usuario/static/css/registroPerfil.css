@@ -1,0 +1,182 @@
+.contenedor-perfil-registro{
+    display: flex;
+}
+
+.form-container {
+    width: 450px;
+    /*border: 1px solid;*/
+    border-radius: 5px;
+    margin-right: 50px;
+}
+
+.form-container .foto_perfil-container{
+    height: 228px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background-color: rgba(101, 110, 211, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-container .foto_perfil-container img{
+    max-width: 120px;
+    height: 120px;
+    border: 7px solid white;
+    border-radius: 180px;
+}
+
+/* Estilos generales para el formulario y el contenedor */
+.form-container-register-perfil {
+    background-color: rgba(230, 230, 230, 1);
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px; /* Establece un ancho máximo para el contenedor */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.registration-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Estilos para los elementos del formulario */
+.registration-form p {
+    margin: 0;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-input {
+    width: calc(100% - 20px); /* Resta el padding para evitar que sobrepase el contenedor */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: #007BFF;
+}
+
+.form-input-radio{
+    display: block;
+    position: relative;
+    width: auto;
+    margin: auto;
+    bottom: 15px;
+    right: -30px;
+}
+
+/* Estilos para el botón de submit */
+.submit-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .contenedor-perfil-registro {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container .foto_perfil-container img {
+        max-width: 80px;
+        height: 80px;
+        border-width: 5px;
+    }
+
+    .registration-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para pantallas muy pequeñas (por ejemplo, dispositivos móviles) */
+@media only screen and (max-width: 480px) {
+    .contenedor-perfil-registro {
+        flex-direction: column;
+    }
+
+    .form-container {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .form-container .foto_perfil-container img {
+        max-width: 80px;
+        height: 80px;
+        border: 5px solid white;
+        border-radius: 50%;
+    }
+
+    .form-container-register-perfil {
+        margin-top: 15px;
+        padding: 10px;
+        max-width: 100%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .registration-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    .form-input:focus {
+        border-color: #007BFF;
+    }
+
+    .submit-button {
+        padding: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

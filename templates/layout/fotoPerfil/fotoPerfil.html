@@ -1,0 +1,10 @@
+{% load static %}
+{% if user.is_authenticated %}
+    {% if user.usuario.foto %}
+        <img src="{{ user.usuario.foto.url }}" class="img-fluid">
+    {% else %}
+        <img src="{% static 'img/default_user_image1.png' %}" class="img-fluid">
+    {% endif %}
+{% else %}
+    <img src="{% static 'img/default_user_image1.png' %}" class="img-fluid">
+{% endif %}

@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+
+{% block seccion %}
+{% comment %} {% load static%} {% endcomment %}
+
+<div class= "FormRegister">
+    <form  method= "post">
+        {% csrf_token %}
+        {{error}}
+        {{register.as_p}}
+        <p>
+            <label>Email:</label>
+            <input name= 'email'/>
+        </p>
+        <button class='btn-Register'> Register</button>
+        <p class = "redireccion">¿Ya tienes una cuenta? <span class= 'spamLogin'><a href="{% url "login" %}">Login</a></span></p>
+    </form>
+</div>
+    
+
+
+{% endblock  %}

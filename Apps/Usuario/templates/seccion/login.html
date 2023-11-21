@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block seccion %}
+  <div class="FormLogin">
+    <form method="post">
+      {% csrf_token %} 
+      {{error}}
+      {{login.as_p}}
+      <button class='btn-login'>Login</button>
+      <p class = "redireccion">¿No tienes una cuenta? <span class= 'spamRegistro'><a href="{% url 'register' %}">Registro</a></span></p>
+    </form>
+  </div>
+
+{% endblock %}

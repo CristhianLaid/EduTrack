@@ -1,0 +1,97 @@
+.registro-rostro{
+    width: 80vh;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.registro-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.registro-title {
+    color: rgba(101, 110, 211, 1);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+}
+
+.registro-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.registro-video {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.registro-button {
+    background-color: rgba(101, 110, 211, 1);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registro-button:hover {
+    background-color: rgba(101, 110, 211, 0.8);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media only screen and (max-width: 480px) {
+    .registro-rostro {
+        padding: 10px; /* Ajusta el espacio interno para pantallas más pequeñas */
+    }
+
+    .registro-title {
+        font-size: 18px; /* Reducir el tamaño del título para mejorar la legibilidad */
+    }
+
+    .registro-content {
+        padding: 10px; /* Ajustar el espacio interno para pantallas más pequeñas */
+    }
+
+    .registro-video {
+        width: 100%; /* Ajustar el video al 100% del ancho del contenedor */
+        max-width: none; /* Eliminar el ancho máximo para adaptarse a la pantalla pequeña */
+    }
+
+    .registro-button {
+        font-size: 14px; /* Reducir el tamaño del botón para pantallas más pequeñas */
+    }
+}
+
+/* Ajustes para teléfonos móviles */
+@media only screen and (max-width: 768px) {
+    .registro-rostro {
+        padding: 10px; /* Ajusta el espacio interno para teléfonos móviles */
+    }
+
+    .registro-title {
+        font-size: 20px;
+    }
+
+    .registro-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registro-video {
+        max-width: 100%;
+    }
+
+    .registro-button {
+        font-size: 16px; /* Puedes ajustar el tamaño del botón para teléfonos móviles */
+    }
+}

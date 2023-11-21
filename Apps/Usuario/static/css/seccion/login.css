@@ -1,0 +1,85 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor{
+    width: 650px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.FormLogin{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+}
+
+.FormLogin form{
+    width: 100%;
+    margin: 5px;
+}
+
+.FormLogin form p{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.FormLogin form p input{
+    border-color: rgba(170, 171, 201, 0) ;
+    border: 2px solid rgba(120, 122, 142, 1);
+    border-radius: 50px;
+}
+
+.FormLogin .btn-login{
+    width: 100%;
+    height: 20px;
+    margin-top: 15px;
+    background-color: rgba(114, 120, 191, 1);
+    color: rgba(186, 187, 204, 1);
+    border-radius: 50px;
+    border: 1px solid rgb(85, 95, 201);
+}
+
+.FormLogin .btn-login:hover{
+    background: rgb(95, 103, 189);
+    color: rgb(173, 176, 218);
+    border: 2px solid rgb(85, 95, 201);
+}
+
+
+.FormLogin .redireccion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.FormLogin .redireccion span ul {
+    list-style: none;
+    text-decoration: none;
+    color: #fff; /* Color de texto */
+    transition: background-color 0.3s ease; 
+}
+
+.spamRegistro a{
+    text-decoration: none;
+    font-weight:600;
+    color: black;
+}

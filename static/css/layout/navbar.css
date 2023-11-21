@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", ui-system, sans-serif;
+    box-sizing: border-box;
+}
+
+.contenedorr {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    grid-template-areas: "menu context context";
+}
+
+.contenedorr .navbar-lateral {
+    grid-area: menu;
+    background-color: rgba(101, 110, 211, 1);
+}
+
+.contenedorr .navbar-content {
+    grid-area: context;
+    background-color: rgba(235, 239, 255, 1);
+    padding: 20px;
+    position: relative;
+}
+
+.mobile-menu-icon {
+    display: none; /* Ocultar el icono de hamburguesa en pantallas más grandes */
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Ocultar el menú por defecto */
+    background-color: #c71010;
+}
+
+.navbar-menu.show {
+    display: block; /* Mostrar el menú cuando tiene la clase 'show' */
+}
+
+.navbar-menu li {
+    padding: 10px;
+}
+
+
+/* Media query para tabletas y pantallas más pequeñas */
+@media only screen and (max-width: 768px) {
+    .contenedorr {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "menu"
+            "context";
+    }
+
+    .contenedorr .navbar-content {
+        padding: 10px; /* Reducir el espacio de relleno para dispositivos más pequeños */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .contenedorr {
+        grid-template-columns: 1fr;
+        min-height: auto; /* Ajustar la altura automáticamente */
+    }
+
+    .contenedorr .navbar-lateral {
+        /*visibility: hidden; !* Ocultar visualmente el menú lateral *!*/
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Mostrar el icono en dispositivos móviles */
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .navbar-menu.show {
+        display: block; /* Asegúrate de que el menú se muestre cuando se haga clic en el icono */
+    }
+}
+

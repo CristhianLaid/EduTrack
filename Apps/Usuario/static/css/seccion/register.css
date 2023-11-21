@@ -1,0 +1,71 @@
+
+
+.FormRegister{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 350px;
+    margin: 10px;
+}
+
+.FormRegister form{
+    width: 100%;
+    margin: 5px;
+}
+
+.FormRegister form p{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.FormRegister form p input{
+    border-color: rgba(170, 171, 201, 0) ;
+    border: 2px solid rgba(120, 122, 142, 1);
+    border-radius: 50px;
+}
+
+.FormRegister form p select{
+    border-color: rgba(170, 171, 201, 0) ;
+    border: 2px solid rgba(120, 122, 142, 1);
+    border-radius: 50px;
+    margin-bottom: 5px;
+}
+
+
+.FormRegister .btn-Register{
+    width: 100%;
+    height: 20px;
+    margin-top: 15px;
+    background-color: rgba(114, 120, 191, 1);
+    color: rgba(186, 187, 204, 1);
+    border-radius: 50px;
+    border: 1px solid rgb(85, 95, 201);
+}
+
+.FormRegister .btn-Register:hover{
+    background: rgb(95, 103, 189);
+    color: rgb(173, 176, 218);
+    border: 2px solid rgb(85, 95, 201);
+}
+
+.FormRegister .redireccion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.FormRegister .redireccion span ul {
+    list-style: none;
+    text-decoration: none;
+    color: #fff; /* Color de texto */
+    transition: background-color 0.3s ease; 
+}
+
+.spamLogin a{
+    text-decoration: none;
+    font-weight:600;
+    color: black;
+}

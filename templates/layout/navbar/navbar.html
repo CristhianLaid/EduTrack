@@ -1,0 +1,13 @@
+{% load static %}
+<div class="secciones">
+    <div class="perfil">
+        {% include 'layout/fotoPerfil/fotoPerfil.html' %}
+    </div>
+    <section class="nav">
+        <ul style="list-style: none">
+            <li><a href="{% url 'perfil' %}">Perfil</a></li>
+            <li><a>Asistencias</a></li>
+            <li><a href="{% url 'logout' %}">logout</a></li>
+        </ul>
+    </section>
+</div>

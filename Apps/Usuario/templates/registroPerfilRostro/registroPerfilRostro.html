@@ -1,0 +1,24 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="contenedor-perfil-registro">
+        <div class="form-container">
+            <div class="foto_perfil-container">
+                {% include 'layout/fotoPerfil/fotoPerfil.html' %}
+                <p>...</p>
+            </div>
+            <div class="form-container-register-perfil">
+                {{ error }}
+                <form enctype="multipart/form-data" method="post" class="registration-form">
+                    {% csrf_token %}
+                    {{ formsUser.as_p }}
+                    {{ forms.as_p }}
+                    <button type="submit" class="submit-button">Registrar</button>
+                </form>
+            </div>
+        </div>
+        {% include 'RegistroRostro.html' %}
+    </div>
+{% endblock %}
+
