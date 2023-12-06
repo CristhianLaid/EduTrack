@@ -1,0 +1,22 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+    <div class="course-details">
+        <h2 class="course-title">{{ curso.nombreCurso }}</h2>
+        <p class="course-info"><strong>Carrera:</strong> {{ curso.carrera }}</p>
+        <p class="course-info"><strong>Asignatura:</strong> {{ curso.asignatura }}</p>
+        <p class="course-info"><strong>Profesor:</strong>{{ creador }}</p>
+        <p class="course-description">{{ curso.descripcion }}</p>
+
+        <a href="{% url 'viewsCourse' %}" class="btn-back">
+            <button>Volver a la lista de cursos</button>
+        </a>
+        <a href="{% url 'allParticipantsCourse' %}?curso_id={{ curso.id }}" class="btn-back">
+            <button>Ver participantes</button>
+        </a>
+        <a  {# href="{% url 'allParticipantsCourse' %}?curso_id={{ curso.id }}" #} class="btn-back">
+            <button>Asistencia</button>
+        </a>
+
+    </div>
+{% endblock %}

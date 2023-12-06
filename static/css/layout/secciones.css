@@ -35,9 +35,49 @@
    font-size: 15pt;
     font-weight: bold;
     color: #dec9ee;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.secciones .nav ul li a:hover {
+    color: black; /* Cambia el color al pasar el mouse */
 }
 
 .secciones .nav ul li a:active{
     color: #ccc8d5;
 }
 
+/* Estilos para pantallas medianas (tabletas) */
+@media only screen and (max-width: 768px) {
+    .secciones {
+        grid-template-areas:
+            "perfil"
+            "nav";
+    }
+}
+
+/* Estilos para pantallas pequeñas (teléfonos móviles) */
+@media only screen and (max-width: 480px) {
+    .secciones {
+        grid-template-areas:
+                "perfil"
+                "nav"; /* Cambia a una fila */
+        height: auto; /* Elimina la altura fija para adaptarse al contenido */
+
+    }
+
+    .secciones .nav {
+        margin-top: 10px;
+        padding: 30px;
+    }
+
+    .secciones .perfil img {
+        height: 120px;
+        max-width: 120px;
+        border-width: 3px;
+    }
+
+    .secciones .nav ul li a {
+        font-size: 14pt;
+    }
+}
