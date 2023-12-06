@@ -1,0 +1,5 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="curso_id" value="{{ curso.curso.id }}">
+    <button type="submit" class="btn btn-primary">Unirte al curso</button>
+</form>

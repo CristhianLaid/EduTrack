@@ -1,8 +1,44 @@
 {% extends 'layout/layout.html' %}
+
 {% block content %}
-{% if cursos %}
-	<p>Hay cursos</p>
-{% else %}
-    {% include 'curso/notExistsCourse.html' %}
-{% endif %} 
+    <div class="container-fluid"
+         style="background-color: rgba(248,249,250,0.26); padding: 20px; height: 100vh; overflow-y: auto;">
+        {% if cursos %}
+            <h2 class="text-center mb-4">Cursos Disponibles</h2>
+            <div class="row">
+                {% for curso in cursos %}
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ curso.curso.nombreCurso }}</h4>
+                                <p class="card-text">Carrera: {{ curso.curso.carrera }}</p>
+                                <p class="card-text">Asignatura: {{ curso.curso.asignatura }}</p>
+                                <p class="card-text">{{ curso.curso.horaEntrada }}--{{ curso.curso.horaSalida }}</p>
+                                <p class="card-text small">{{ curso.curso.descripcion }}</p>
+
+                                {% if not curso.esta_inscrito %}
+                                    {% include 'curso/joinCourse.html' %}
+                                {% else %}
+                                    <a href="{% url 'oneViewCourse' curso.curso.id %}" class="btn btn-success btn-sm">Ver Curso</a>
+                                {% endif %}
+
+                                {% if request.user.usuario.rol.rol == 'Profesor' and curso.curso in cursoDelate %}
+                                    <form method="post" class="mt-2">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar Curso</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                        </div><div class="row">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            {% include 'curso/notExistsCourse.html' %}
+        {% endif %}
+    </div>
 {% endblock %}

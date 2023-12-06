@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mb-4 text-center">Creación de Cursos</h2>
+        {{ error }}
+        <form method="post" class="row g-3 bg-light p-4 rounded">
+            {% csrf_token %}
+
+            <div class="col-md-6">
+                <label for="id_nombreCurso" class="form-label">Nombre del Curso:</label>
+                <input type="text" name="nombreCurso" maxlength="100" required="" class="form-control"
+                       id="id_nombreCurso">
+            </div>
+
+            <div class="col-md-6">
+                <label for="id_carrera" class="form-label">Carrera:</label>
+                <input type="text" name="carrera" maxlength="150" required="" class="form-control" id="id_carrera">
+            </div>
+
+            <div class="col-md-6">
+                <label for="id_asignatura" class="form-label">Asignatura:</label>
+                <select name="asignatura" required="" class="form-select" id="id_asignatura">
+                    <option value="" selected>---------</option>
+                    <option value="1">Construcción de software</option>
+                    <option value="2">Lógica de programación</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="id_descripcion" class="form-label">Descripción:</label>
+                <textarea name="descripcion" cols="40" rows="6" maxlength="250" required="" class="form-control"
+                          id="id_descripcion"></textarea>
+            </div>
+
+            <div class="col-md-6">
+                <label for="id_horaEntrada" class="form-label">Hora de Entrada:</label>
+                <input type="text" name="horaEntrada" class="form-control" id="id_horaEntrada">
+                <div class="form-text">Hora de inicio del curso</div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="id_horaSalida" class="form-label">Hora de Salida:</label>
+                <input type="text" name="horaSalida" class="form-control" id="id_horaSalida">
+                <div class="form-text">Hora de salida del curso</div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <button class="btn btn-primary">Crear Curso</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

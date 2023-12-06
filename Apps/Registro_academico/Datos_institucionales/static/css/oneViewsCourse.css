@@ -1,0 +1,87 @@
+.course-details {
+    background-color: #f3f3f3;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.course-title {
+    color: #1e6091;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.course-info {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.course-description {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    text-decoration: none;
+}
+
+.btn-back button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #1e6091;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-back button:hover {
+    background-color: #144574;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .course-details {
+        padding: 20px;
+    }
+
+    .course-title {
+        font-size: 28px;
+    }
+
+    .course-info,
+    .course-description {
+        font-size: 14px;
+    }
+
+    .btn-back button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .course-details {
+        max-width: 100%;
+    }
+
+    .course-title {
+        font-size: 24px;
+    }
+
+    .course-info,
+    .course-description {
+        font-size: 14px;
+    }
+
+    .btn-back button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

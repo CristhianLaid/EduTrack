@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .lib.roles.rol import Roles
+from ..Registro_academico.Datos_institucionales.models import Curso
+
 
 # Create your models here.
 class Rol(models.Model):
@@ -20,6 +22,14 @@ class Facultad(models.Model):
     class Meta:
         db_table = 'Facultad'
 
+class Carrera(models.Model):
+    nombreCarrera = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.nombreCarrera}'
+
+    class Meta:
+        db_table= 'Carrera'
 
 class Usuario(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -29,10 +39,23 @@ class Usuario(models.Model):
     cedula = models.CharField(max_length=10, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
     facultad = models.ForeignKey(Facultad, on_delete=models.CASCADE, null=True)
+    cursos = models.ManyToManyField(Curso, through='Inscripcion', related_name='cursos_usuario')
+    carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{self.usuario} - {self.rol}'
+        return f'{self.usuario}'
 
     class Meta:
         db_table = 'Usuario'
 
+class Inscripcion(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    facultad = models.TextField(max_length=250,  null=True)
+
+
+    class Meta:
+        db_table='Inscripcion'
+
+    def __str__(self):
+        return f'{self.usuario}-{self.curso}'

@@ -6,7 +6,10 @@
     <section class="nav">
         <ul style="list-style: none">
             <li><a href="{% url 'perfil' %}">Perfil</a></li>
-            <li><a>Asistencias</a></li>
+            <li><a href="{% url 'viewsCourse' %}">Cursos</a></li>
+            {% if user.usuario.rol.rol == 'Profesor'%}
+            	{% include 'layout/navbar/navbarProfesor/profesor.html' %}
+            {% endif %}
             <li><a href="{% url 'logout' %}">logout</a></li>
         </ul>
     </section>
