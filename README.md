@@ -11,8 +11,9 @@ Este proyecto implementa funcionalidades de asistencia y reconocimiento facial p
    cd EduTrack
    
 2. Instala las dependencias:
+   ```bash
 
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 3. Contribuir:
 
