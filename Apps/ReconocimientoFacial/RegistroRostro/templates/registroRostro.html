@@ -1,9 +1,80 @@
-<div class="registro-rostro">
+{#<div class="registro-rostro">#}
+{#    <div class="registro-header">#}
+{#        <p class="registro-title">Registro Rostro</p>#}
+{#    </div>#}
+{#    <div class="registro-content">#}
+{#        <video class="registro-video" id="webcam" autoplay></video>#}
+{#        <button class="registro-button" onclick="capturarRostro()">Registrar</button>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<script>#}
+{#    document.addEventListener('DOMContentLoaded', () => {#}
+{#        const video = document.getElementById('webcam');#}
+{##}
+{#        // Solicitar acceso a la cámara#}
+{#        navigator.mediaDevices.getUserMedia({video: true})#}
+{#            .then((stream) => {#}
+{#                video.srcObject = stream;#}
+{#            })#}
+{#            .catch((error) => {#}
+{#                console.error('Error al acceder a la webcam:', error);#}
+{#            });#}
+{#    });#}
+{##}
+{#    function capturarRostro() {#}
+{#        console.log('CSRF Token:', getCookie('csrftoken'));#}
+{#        console.log('Capturando rostro...');#}
+{#        // Realizar una solicitud AJAX a la vista de Django#}
+{#        fetch('/rostro/capturar_rostro/', {#}
+{#            method: 'POST',#}
+{#            headers: {#}
+{#                'Content-Type': 'application/json',#}
+{#                'X-CSRFToken': getCookie('csrftoken'),  // Asegúrate de incluir el token CSRF#}
+{#            },#}
+{#            body: JSON.stringify({}),#}
+{#        })#}
+{#            .then(response => response.json())#}
+{##}
+{#            .then(data => {#}
+{#                // Manejar la respuesta del servidor#}
+{#                alert(data.status);#}
+{#            })#}
+{#            .catch(error => {#}
+{#                console.error('Error al realizar la solicitud AJAX:', error);#}
+{#            });#}
+{#    }#}
+{##}
+{#    // Función para obtener el token CSRF desde las cookies#}
+{#    function getCookie(name) {#}
+{#        var cookieValue = null;#}
+{#        if (document.cookie && document.cookie !== '') {#}
+{#            var cookies = document.cookie.split(';');#}
+{#            for (var i = 0; i < cookies.length; i++) {#}
+{#                var cookie = cookies[i].trim();#}
+{#                if (cookie.substring(0, name.length + 1) === (name + '=')) {#}
+{#                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));#}
+{#                    break;#}
+{#                }#}
+{#            }#}
+{#        }#}
+{#        return cookieValue;#}
+{#    }#}
+{#</script>#}
+
+
+<div class="registro-rostro" >
     <div class="registro-header">
         <p class="registro-title">Registro Rostro</p>
     </div>
     <div class="registro-content">
-        <video class="registro-video"></video>
-        <button class="registro-button">Registrar</button>
+        <form method="post" enctype="multipart/form-data" action="{% url 'capturar_rostro' %}">
+            {% csrf_token %}
+            <button type="submit" class="registro-button">Capturar Rostro</button>
+        </form>
     </div>
 </div>
+
+
+
+

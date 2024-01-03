@@ -7,10 +7,15 @@ from django.db.models import Q
 from .models import Curso, Asignatura
 from ...Usuario.models import Usuario, Inscripcion, Carrera
 from .forms import CreateCourseForm
-
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
+
+def es_profesor(user):
+    return user.is_authenticated and user.usuario.rol.rol == 'Profesor'
+
 @login_required
+@user_passes_test(es_profesor)
 def CreateCourse(request):
     if request.method == 'GET':
         return render(request, 'curso/createCourse.html', {'form': CreateCourseForm})

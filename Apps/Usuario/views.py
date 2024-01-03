@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Usuario, Rol
 from django.db import IntegrityError
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def Login(request):
@@ -40,6 +42,7 @@ def Register(request):
         )
         rolUser = Rol.objects.get(rol=request.POST['rol'])
         user = Usuario.objects.create(usuario=Auth, rol=rolUser)
+        # user = Usuario.objects.create(usuario=Auth)
         user.save()
         login(request, Auth)
         return redirect('perfil')
@@ -53,21 +56,24 @@ def Logout(request):
 
 @login_required
 def RegisterPerfilRostro(request):
-    user = request.user.usuario
-    registerUserFrom = RegisterUserForm(request.POST, request.FILES, instance=user)
-    customUserFrom = CustomUserChangeForm(request.POST, instance=request.user)
+    usuario_instance = get_object_or_404(Usuario, usuario=request.user)
+    registerUserFrom = RegisterUserForm(instance=usuario_instance)
+    customUserFrom = CustomUserChangeForm(instance=request.user)
 
     if request.method == 'GET':
+        print("Contexto en GET:", {'forms': registerUserFrom, 'formsUser': customUserFrom})
         return render(request, 'registroPerfilRostro/registroPerfilRostro.html', {'forms': registerUserFrom, 'formsUser': customUserFrom})
     else:
         try:
+            registerUserFrom = RegisterUserForm(request.POST, request.FILES, instance=usuario_instance)
+            customUserFrom = CustomUserChangeForm(request.POST, instance=request.user)
             if registerUserFrom.is_valid() and customUserFrom.is_valid():
-                print(registerUserFrom)
                 registerUserFrom.save()
                 customUserFrom.save()
-                return redirect('EditPerfilRostro')
-
+                return redirect('perfil')
         except:
+            import traceback
+            traceback.print_exc()
             return render(request, 'registroPerfilRostro/registroPerfilRostro.html', {'forms': registerUserFrom, 'formsUser': customUserFrom, 'error': 'Error al enviar datos'})
 
 @login_required

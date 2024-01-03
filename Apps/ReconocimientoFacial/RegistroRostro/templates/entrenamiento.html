@@ -1,0 +1,9 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+  <h1>Entrenamiento de Reconocimiento Facial</h1>
+  <form method="post" action="{% url 'entrenamiento' %}">
+    {% csrf_token %}
+    <button type="submit">Iniciar Entrenamiento</button>
+  </form>
+{% endblock %}

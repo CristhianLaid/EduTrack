@@ -14,7 +14,10 @@
         <a href="{% url 'allParticipantsCourse' %}?curso_id={{ curso.id }}" class="btn-back">
             <button>Ver participantes</button>
         </a>
-        <a  {# href="{% url 'allParticipantsCourse' %}?curso_id={{ curso.id }}" #} class="btn-back">
+        <a  href="{% url 'registrar_asistencia_automatizada' %}?curso_id={{ curso.id }}"  class="btn-back">
+            <button>Activar camara</button>
+        </a>
+        <a  href="{% url 'ViewAttendance' %}?curso_id={{ curso.id }}"  class="btn-back">
             <button>Asistencia</button>
         </a>
 

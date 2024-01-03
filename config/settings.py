@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Apps.Usuario',
     'Apps.ReconocimientoFacial.RegistroRostro',
-    'Apps.Registro_academico.Datos_institucionales'
+    'Apps.Registro_academico.Datos_institucionales',
+    'Apps.Asistencia.RegistroAsistencia',
+    'Apps.Asistencia.InformeAsistencia'
 ]
 
 MIDDLEWARE = [

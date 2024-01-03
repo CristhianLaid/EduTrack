@@ -9,6 +9,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(usuario_urls)),
     path('course/', include(Datos_institucionales)),
+    path('rostro/', include('Apps.ReconocimientoFacial.RegistroRostro.urls')),
+    path('attendance/', include('Apps.Asistencia.RegistroAsistencia.urls')),
+    path('informe/', include('Apps.Asistencia.InformeAsistencia.urls'))
 ]
 
 if settings.DEBUG:
