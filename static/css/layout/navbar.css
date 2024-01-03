@@ -8,20 +8,35 @@
 .contenedorr {
     display: grid;
     grid-template-columns: 280px 1fr;
-    min-height: 100vh;
+    height: 100vh;
     grid-template-areas: "menu context context";
+    overflow: hidden;
 }
 
 .contenedorr .navbar-lateral {
     grid-area: menu;
     background-color: rgba(101, 110, 211, 1);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    width: 280px;
+    box-sizing: border-box;
 }
+
+.contenedorr .navbar-lateral.fixed {
+    position: fixed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra cuando está fijo si es necesario */
+}
+
 
 .contenedorr .navbar-content {
     grid-area: context;
     background-color: rgba(235, 239, 255, 1);
     padding: 20px;
     position: relative;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .mobile-menu-icon {

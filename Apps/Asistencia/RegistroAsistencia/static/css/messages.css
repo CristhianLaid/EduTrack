@@ -1,0 +1,62 @@
+/* Estilos para los mensajes de Django */
+.messages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para los diferentes tipos de mensajes */
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilos para los mensajes de éxito */
+.messages .success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+/* Estilos para los mensajes de información */
+.messages .info {
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+/* Estilos para los mensajes de advertencia */
+.messages .warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+/* Estilos para los mensajes de error */
+.messages .error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+/* Estilos para animación de desvanecimiento */
+.messages {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.messages.hidden {
+    opacity: 0;
+}
+
+/* Media query para tablets */
+@media (max-width: 768px) {
+    .messages li {
+        padding: 8px;
+    }
+}
+
+/* Media query para teléfonos */
+@media (max-width: 480px) {
+    .messages li {
+        padding: 6px;
+    }
+}

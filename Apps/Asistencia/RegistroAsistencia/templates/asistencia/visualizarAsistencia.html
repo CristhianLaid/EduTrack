@@ -1,0 +1,110 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="container" style="height: 100vh">
+
+        <h2 class="text-center mb-4">Visualizar Asistencia</h2>
+
+        {% if inscripcion %}
+            {% if user.usuario.rol.rol == 'Profesor' %}
+                <a href="{% url 'generar_informe_pdf' %}?curso_id={{ inscripcion.curso.id }}" class="btn-back">
+                    <button class="btn btn-primary mb-4" name="curso_id" value="{{ inscripcion.curso.id }}">Generar
+                        Informe
+                    </button>
+                </a>
+
+            {% endif %}
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Información de Inscripción</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2">Curso: {{ inscripcion.curso.nombreCurso }}</p>
+                    <p class="mb-2">Facultad: {{ inscripcion.usuario.facultad }}</p>
+                    <!-- Otros detalles de inscripción si los tienes -->
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-warning mt-4" role="alert">
+                <p>No se encontró información de inscripción.</p>
+            </div>
+        {% endif %}
+
+
+        {% if asistencia %}
+            <h3>Asistencia de Participantes</h3>
+            {% comment %} Crear un diccionario para agrupar por día {% endcomment %}
+            {% regroup asistencia by fecha_asistencia as asistencia_por_dia %}
+            {% for fecha, registros_por_dia in asistencia_por_dia %}
+                <h4>{{ fecha }}</h4>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Foto</th>
+                        <th>Nombre del Usuario</th>
+                        <th>Hora de Asistencia</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <!-- Otros campos de asistencia según tu modelo -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for registro in registros_por_dia %}
+                        <tr>
+                            <td>
+                                {% if registro.usuario.foto %}
+                                    <img src="{{ registro.usuario.foto.url }}"
+                                         alt="Foto de {{ registro.usuario.usuario.username }}"
+                                         class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <img src="{% static 'img/default_user_image1.png' %}"
+                                         class="img-fluid rounded-circle"
+                                         style="width: 50px; height: 50px;">
+                                {% endif %}
+                            </td>
+                            <td>{{ registro.usuario.usuario.username }}</td>
+                            <td>{{ registro.hora_asistencia }}</td>
+                            <td>
+                                {% if user.usuario.rol.rol == 'Profesor' %}
+                                    <form method="post"
+                                          action="{% url 'ViewAttendance' %}?curso_id={{ inscripcion.curso.id|urlencode }}">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <input type="hidden" name="registro_id" value="{{ registro.id }}">
+                                        <button type="submit" class="btn btn-sm btn-primary">Actualizar</button>
+                                    </form>
+                                {% else %}
+                                    {{ registro.tipo }}
+                                {% endif %}
+                            </td>
+                            <td>{{ registro.estado_asistencia }}</td>
+                            <!-- Otros campos de asistencia según tu modelo -->
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning mt-4" role="alert">
+                <p>No hay registros de asistencia para este curso.</p>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts here -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+    <h1>Reconocimiento Facial</h1>
+    <div>
+        <img src="data:image/jpeg;base64,{{ frame }}" width="640" height="480">
+    </div>
+
+{% endblock %}
